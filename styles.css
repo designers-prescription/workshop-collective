@@ -178,6 +178,10 @@ footer {
     letter-spacing: 1px;
     animation: blink 2s ease-in-out infinite;
     text-align: center;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
 }
 
 .cta-full,
