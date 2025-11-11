@@ -15,76 +15,197 @@ body {
 
 header {
     text-align: center;
-    padding: 60px 20px 40px;
+    padding: 50px 20px 30px;
 }
 
 .logo {
-    font-size: 72px;
-    font-weight: bold;
-    color: #90EE90;
-    letter-spacing: 2px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    display: block;
 }
 
 .tagline {
     font-size: 18px;
-    color: #B0E0B0;
     letter-spacing: 1px;
+    background: linear-gradient(90deg, #0097b2 0%, #7ed957 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
 }
 
 .sun-icon {
     color: #FFD700;
+    -webkit-text-fill-color: #FFD700;
     font-size: 20px;
     margin-left: 8px;
 }
 
 main {
     flex: 1;
-    padding: 0 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0 20px 30px;
 }
 
-.single-image-block {
-    width: 100%;
-    max-width: 1200px;
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    max-width: 1800px;
     margin: 0 auto;
 }
 
-.image-placeholder {
-    width: 100%;
+.project-item {
+    aspect-ratio: 820 / 490;
     background-color: #1a1a1a;
     border: 1px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
-.image-placeholder img {
+.project-item:hover {
+    transform: scale(1.02);
+    border-color: #90EE90;
+}
+
+.project-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    object-fit: contain;
+}
+
+.accordion-section {
+    max-width: 900px;
+    margin: 50px auto 0;
+    padding: 0 20px;
+}
+
+.accordion-toggle {
+    width: 100%;
+    background-color: #000000;
+    border: 1px solid #333;
+    padding: 20px 30px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.accordion-toggle:hover {
+    border-color: #90EE90;
+}
+
+.accordion-title {
+    font-size: 18px;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #0097b2 0%, #7ed957 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.accordion-icon {
+    font-size: 24px;
+    color: #90EE90;
+    transition: transform 0.3s ease;
+    line-height: 1;
+}
+
+.accordion-toggle.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background-color: #000000;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.accordion-content.open {
+    max-height: 2000px;
+}
+
+.accordion-text {
+    padding: 0 30px 30px;
+    color: #B0E0B0;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+.accordion-text p:first-child {
+    padding-top: 30px;
+    margin-bottom: 20px;
+}
+
+.accordion-text p {
+    margin-bottom: 20px;
+}
+
+.accordion-text p:last-child {
+    margin-bottom: 0;
 }
 
 footer {
     text-align: center;
-    padding: 40px 20px 60px;
+    padding: 15px 20px 50px;
 }
 
 .cta {
     font-size: 16px;
-    color: #90EE90;
     letter-spacing: 1px;
+    background: linear-gradient(90deg, #0097b2 0%, #7ed957 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
 }
 
 /* Responsive design */
+@media (max-width: 1400px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 @media (max-width: 900px) {
-    .logo {
-        font-size: 56px;
+    .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .logo img {
+        height: 60px;
     }
     
     .tagline {
@@ -93,8 +214,13 @@ footer {
 }
 
 @media (max-width: 600px) {
-    .logo {
-        font-size: 48px;
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .logo img {
+        height: 50px;
     }
     
     .tagline {
@@ -105,8 +231,25 @@ footer {
         font-size: 14px;
     }
     
-    .placeholder-text {
-        font-size: 16px;
+    .accordion-section {
+        margin-top: 40px;
+    }
+    
+    .accordion-toggle {
+        padding: 15px 18px;
+    }
+    
+    .accordion-title {
+        font-size: 15px;
+    }
+    
+    .accordion-icon {
+        font-size: 20px;
+    }
+    
+    .accordion-text {
+        padding: 0 18px 20px;
+        font-size: 14px;
     }
 }
 
