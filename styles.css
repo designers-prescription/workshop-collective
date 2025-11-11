@@ -15,7 +15,7 @@ body {
 
 header {
     text-align: center;
-    padding: 50px 20px 30px;
+    padding: 50px 20px 40px;
 }
 
 .logo {
@@ -50,7 +50,7 @@ header {
 
 main {
     flex: 1;
-    padding: 0 20px 30px;
+    padding: 0 20px 0;
 }
 
 .portfolio-grid {
@@ -59,6 +59,7 @@ main {
     gap: 20px;
     max-width: 1800px;
     margin: 0 auto;
+    padding-top: 0;
 }
 
 .project-item {
@@ -88,7 +89,7 @@ main {
 
 .accordion-section {
     max-width: 900px;
-    margin: 50px auto 0;
+    margin: 30px auto 50px;
     padding: 0 20px;
 }
 
@@ -169,18 +170,33 @@ main {
 
 footer {
     text-align: center;
-    padding: 15px 20px 50px;
+    padding: 40px 20px 30px;
 }
 
 .cta {
     font-size: 16px;
     letter-spacing: 1px;
+    animation: blink 2s ease-in-out infinite;
+    text-align: center;
+}
+
+.cta-full,
+.cta-line-1,
+.cta-line-2 {
     background: linear-gradient(90deg, #0097b2 0%, #7ed957 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    animation: blink 2s ease-in-out infinite;
+}
+
+.cta-full {
+    display: inline;
+}
+
+.cta-line-1,
+.cta-line-2 {
+    display: none;
 }
 
 @keyframes blink {
@@ -210,6 +226,19 @@ footer {
     
     .tagline {
         font-size: 16px;
+    }
+    
+    .cta-full {
+        display: none;
+    }
+    
+    .cta-line-1 {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .cta-line-2 {
+        display: block;
     }
 }
 
